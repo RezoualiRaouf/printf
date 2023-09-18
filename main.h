@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 int _putchar(char c);
+void _puts(char *str);
 /**
  * struct data - Data structure to map format specifiers to functions
  * @ch: The format specifier
@@ -16,7 +17,7 @@ void (*f)(va_list ptlist);
 int _strcmp(char *s1, char *s2);
 void print_char(va_list ptlist);
 void print_string(va_list ptlist);
-
+void print_percentage(va_list ptlist);
 
 
 

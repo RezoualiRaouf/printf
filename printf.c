@@ -12,7 +12,8 @@ int i;
 va_list ptlist;
 dt ar[] = {
 	{"c", print_char},
-	{"s", print_string}
+	{"s", print_string},
+	{"%", print_percentage}
 };
 const char *current_format = format;
 va_start(ptlist, format);
@@ -22,19 +23,14 @@ while (*current_format)
 	if (*current_format == '%')
 	{
 		current_format++;
-		if (*current_format == '%')
-			_putchar('%');
-		else
+		while (ar[i].ch)
 		{
-			while (ar[i].ch)
+			if (*ar[i].ch == *current_format)
 			{
-				if (*ar[i].ch == *current_format)
-				{
-					ar[i].f(ptlist);
-					break;
-				}
-				i++;
+				ar[i].f(ptlist);
+				break;
 			}
+			i++;
 		}
 	}
 	else
