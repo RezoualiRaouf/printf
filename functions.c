@@ -47,12 +47,11 @@ void print_string(va_list ptlist)
 {
 	int i = 0;
 char *value = va_arg(ptlist, char *);
-if (value != NULL)
+if (value == NULL)
+	value = "(null)";
+while (value[i] != '\0')
 {
-	while (value[i] != '\0')
-	{
-		_putchar(value[i]);
-		i++;
-	}
+	_putchar(value[i]);
+	i++;
 }
 }
