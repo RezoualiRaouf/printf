@@ -2,6 +2,9 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
+#include <stdlib.h>
 #define OUTPUT_BUF_SIZE 1024
 #define BUF_FLUSH -1
 #define NULL_STRING "(null)"

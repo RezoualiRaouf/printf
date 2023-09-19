@@ -59,11 +59,6 @@ int print_int(va_list ptlist)
 		_putchar('-');
 		sum++;
 	}
-	if (num == 0)
-	{
-		_putchar('0');
-		sum++;
-	}
 	temp = num;
 	do {
 		temp /= 10;
