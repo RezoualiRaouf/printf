@@ -49,10 +49,11 @@ int print_percentage(va_list ptlist)
  */
 int print_int(va_list ptlist)
 {
-	int num = va_arg(ptlist, int);
+	long num;
 	int sum = 0, temp, divisor;
 	char digit;
 
+	num = (int)va_arg(ptlist, int);
 	if (num < 0)
 	{
 		num = -num;
