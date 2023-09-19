@@ -3,41 +3,33 @@
  * _printf - Custom printf function to print formatted output.
  * @format: Format string containing format specifiers.
  * @...: Variable number of arguments to be formatted and printed.
- *
  * Return: Number of characters printed (excluding null byte), or -1 on error.
  */
 int _printf(const char *format, ...)
 {
-int i;
+int sum = 0;
 va_list ptlist;
-dt ar[] = {
-	{"c", print_char},
-	{"s", print_string},
-	{"%", print_percentage}
-};
-const char *current_format = format;
+char *p, *start;
 va_start(ptlist, format);
-while (*current_format)
+if (!format || (format[0] == '%' && !format[1]))
+	return (-1);
+if (format[0] == '%' && format[1] == ' ' && !format[2])
+	return (-1);
+for (p = (char *)format ; *p ; p++)
 {
-	i = 0;
-	if (*current_format == '%')
+	if (*p != '%')
 	{
-		current_format++;
-		while (ar[i].ch)
-		{
-			if (*ar[i].ch == *current_format)
-			{
-				ar[i].f(ptlist);
-				break;
-			}
-			i++;
-		}
+		sum += _putchar(*p);
+		continue;
 	}
-	else
-		_putchar(*current_format);
-
-current_format++;
+start = p;
+p++;
+if (!get_specifier(p))
+	sum += print_start_stop(start, p);
+else
+	sum += get_print_func(p, ptlist);
 }
+_putchar(BUF_FLUSH);
 va_end(ptlist);
-return (0);
+return (sum);
 }

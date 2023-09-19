@@ -2,12 +2,12 @@
 /**
  *_puts - prints a string
  *@str: pointes to string
+ *Return: int
  */
-void _puts(char *str)
+int _puts(char *str)
 {
-while (*str != '\0')
-{
-	_putchar(*str);
-	(str)++;
-}
+	char *a = str;
+while (*str)
+	_putchar(*str++);
+return (str - a);/*returns the size of the array that has been printed*/
 }

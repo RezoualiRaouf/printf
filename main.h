@@ -2,8 +2,11 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <unistd.h>
-int _putchar(char c);
-void _puts(char *str);
+#define OUTPUT_BUF_SIZE 1024
+#define BUF_FLUSH -1
+#define NULL_STRING "(null)"
+int _putchar(int c);
+int _puts(char *str);
 /**
  * struct data - Data structure to map format specifiers to functions
  * @ch: The format specifier
@@ -12,20 +15,14 @@ void _puts(char *str);
 typedef struct data
 {
 char *ch;
-void (*f)(va_list ptlist);
+int (*f)(va_list ptlist);
 } dt;
-int _strcmp(char *s1, char *s2);
-void print_char(va_list ptlist);
-void print_string(va_list ptlist);
-void print_percentage(va_list ptlist);
-
-
-
-
+int print_char(va_list ptlist);
+int print_string(va_list ptlist);
+int print_percentage(va_list ptlist);
+int print_start_stop(char *start, char *stop);
+int get_print_func(char *c, va_list ptlist);
+int (*get_specifier(char *c))(va_list ptlist);
 
 int _printf(const char *format, ...);
-
-
-
-
 #endif
