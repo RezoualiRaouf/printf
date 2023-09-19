@@ -20,6 +20,7 @@ int (*f)(va_list ptlist);
 int print_char(va_list ptlist);
 int print_string(va_list ptlist);
 int print_percentage(va_list ptlist);
+int print_int(va_list ptlist);
 int print_start_stop(char *start, char *stop);
 int get_print_func(char *c, va_list ptlist);
 int (*get_specifier(char *c))(va_list ptlist);

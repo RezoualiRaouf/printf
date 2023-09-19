@@ -41,3 +41,44 @@ int print_percentage(va_list ptlist)
 
 	return (_putchar('%'));
 }
+
+/**
+ * print_int - prints an integer
+ * @ptlist: A va_list pointing to the argument.
+ * Return: number of bytes
+ */
+int print_int(va_list ptlist)
+{
+	int num = va_arg(ptlist, int);
+	int sum = 0, temp, divisor;
+	char digit;
+
+	if (num < 0)
+	{
+		num = -num;
+		_putchar('-');
+		sum++;
+	}
+	if (num == 0)
+	{
+		_putchar('0');
+		sum++;
+	}
+	temp = num;
+	do {
+		temp /= 10;
+		sum++;
+	} while (temp != 0);
+	divisor = 1;
+	while (num / divisor >= 10)
+	{
+		divisor *= 10;
+	}
+	while (divisor > 0)
+	{
+		digit = (num / divisor) % 10 + '0';
+		_putchar(digit);
+		divisor /= 10;
+	}
+	return (sum);
+}
