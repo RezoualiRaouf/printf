@@ -2,7 +2,7 @@
 
 /**
  * get_specifier - finds the format functions
- * @s: the format string
+ * @c: the format string
  *
  * Return: number of bytes printed
  */
@@ -38,7 +38,8 @@ int get_print_func(char *c, va_list ptlist)
 {
 	int (*f)(va_list ptlist) = get_specifier(c);
 
-	if (f) {
+	if (f)
+	{
 		return (f(ptlist));
 	}
 	return (0);

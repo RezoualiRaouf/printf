@@ -11,8 +11,8 @@ int _printf(const char *format, ...)
 	int sum = 0;
 	va_list ptlist;
 	char *p, *start;
+
 	va_start(ptlist, format);
-	
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
